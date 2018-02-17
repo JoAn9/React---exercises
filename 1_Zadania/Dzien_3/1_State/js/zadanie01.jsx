@@ -21,7 +21,7 @@ class TextTyper extends React.Component {
             if(this.state.count === this.props.text.length + 1) {
                 clearInterval(this.interval)
             }
-        }, 1000);
+        }, 250);
     }
 
     render() {
