@@ -9636,11 +9636,7 @@ var StrobeLight = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            if (this.state.isChanged) {
-                return _react2.default.createElement('div', { style: { width: "500px", height: "500px", backgroundColor: this.props.color } });
-            } else {
-                return _react2.default.createElement('div', { style: { width: "500px", height: "500px", backgroundColor: "yellow" } });
-            }
+            return _react2.default.createElement('div', { style: { width: "500px", height: "500px", backgroundColor: this.state.isChanged ? this.props.color : "yellow" } });
         }
     }]);
 

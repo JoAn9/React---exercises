@@ -18,12 +18,8 @@ class StrobeLight extends React.Component {
     }
 
     render() {
-        if(this.state.isChanged) {
-            return <div style={{width: "500px", height: "500px", backgroundColor: this.props.color}}></div>
-        } else {
-            return <div style={{width: "500px", height: "500px", backgroundColor: "yellow"}}></div>
-        }
-
+        return <div style={{width: "500px", height: "500px", backgroundColor: this.state.isChanged ? this.props.color : "yellow"}}>
+        </div>
     }
 }
 
