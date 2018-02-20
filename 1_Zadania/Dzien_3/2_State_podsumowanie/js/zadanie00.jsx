@@ -1,22 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class ClockTime extends React.Component {
-    render() {
-        return <h1>
-            {this.props.date.toLocaleTimeString()}
-        </h1>
-    }
-}
+const ClockTime = (props) => {
+    return <h1>
+        {props.date.toLocaleTimeString()}
+    </h1>
+};
 
-class ClockDate extends React.Component {
-    render() {
+const ClockDate = (props) => {
         return <h1>
-            {this.props.date.toLocaleDateString()}
+            {props.date.toLocaleDateString()}
         </h1>
-    }
-}
-
+};
 
 class Clock extends React.Component {
     constructor(props) {
