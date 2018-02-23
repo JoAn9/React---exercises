@@ -1,10 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+class ClockTimeHour extends React.Component {
+    render() {
+        return <h1>
+            {this.props.date.getHours()}
+        </h1>
+    }
+}
+
+
+class ClockTimeMinute extends React.Component {
+    render() {
+        return <h1>
+            {this.props.date.getMinutes()}
+        </h1>
+    }
+}
+
+
+class ClockTimeSecond extends React.Component {
+    render() {
+        return <h1>
+            {this.props.date.getSeconds()}
+        </h1>
+    }
+}
+
+
 class ClockTime extends React.Component {
     render() {
         return <h1>
-            {this.props.date.toLocaleTimeString()}
+            <ClockTimeHour date={this.props.date}/>
+            <ClockTimeMinute date={this.props.date}/>
+            <ClockTimeSecond date={this.props.date}/>
+
         </h1>
     }
 }
