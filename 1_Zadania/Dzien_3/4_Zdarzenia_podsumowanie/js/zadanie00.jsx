@@ -27,9 +27,6 @@ class Button extends React.Component {
         })
     }
 
-
-
-
     render() {
         return <div>
             <button onClick={this.handleButton1Click}>
