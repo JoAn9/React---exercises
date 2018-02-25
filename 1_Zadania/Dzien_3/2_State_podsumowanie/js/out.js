@@ -9608,170 +9608,91 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClockTimeHour = function (_React$Component) {
-    _inherits(ClockTimeHour, _React$Component);
+var StrobeControl = function (_React$Component) {
+    _inherits(StrobeControl, _React$Component);
 
-    function ClockTimeHour() {
-        _classCallCheck(this, ClockTimeHour);
+    function StrobeControl(props) {
+        _classCallCheck(this, StrobeControl);
 
-        return _possibleConstructorReturn(this, (ClockTimeHour.__proto__ || Object.getPrototypeOf(ClockTimeHour)).apply(this, arguments));
-    }
+        var _this = _possibleConstructorReturn(this, (StrobeControl.__proto__ || Object.getPrototypeOf(StrobeControl)).call(this, props));
 
-    _createClass(ClockTimeHour, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'h1',
-                null,
-                this.props.date.getHours()
-            );
-        }
-    }]);
-
-    return ClockTimeHour;
-}(_react2.default.Component);
-
-var ClockTimeMinute = function (_React$Component2) {
-    _inherits(ClockTimeMinute, _React$Component2);
-
-    function ClockTimeMinute() {
-        _classCallCheck(this, ClockTimeMinute);
-
-        return _possibleConstructorReturn(this, (ClockTimeMinute.__proto__ || Object.getPrototypeOf(ClockTimeMinute)).apply(this, arguments));
-    }
-
-    _createClass(ClockTimeMinute, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'h1',
-                null,
-                this.props.date.getMinutes()
-            );
-        }
-    }]);
-
-    return ClockTimeMinute;
-}(_react2.default.Component);
-
-var ClockTimeSecond = function (_React$Component3) {
-    _inherits(ClockTimeSecond, _React$Component3);
-
-    function ClockTimeSecond() {
-        _classCallCheck(this, ClockTimeSecond);
-
-        return _possibleConstructorReturn(this, (ClockTimeSecond.__proto__ || Object.getPrototypeOf(ClockTimeSecond)).apply(this, arguments));
-    }
-
-    _createClass(ClockTimeSecond, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'h1',
-                null,
-                this.props.date.getSeconds()
-            );
-        }
-    }]);
-
-    return ClockTimeSecond;
-}(_react2.default.Component);
-
-var ClockTime = function (_React$Component4) {
-    _inherits(ClockTime, _React$Component4);
-
-    function ClockTime() {
-        _classCallCheck(this, ClockTime);
-
-        return _possibleConstructorReturn(this, (ClockTime.__proto__ || Object.getPrototypeOf(ClockTime)).apply(this, arguments));
-    }
-
-    _createClass(ClockTime, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'h1',
-                null,
-                _react2.default.createElement(ClockTimeHour, { date: this.props.date }),
-                _react2.default.createElement(ClockTimeMinute, { date: this.props.date }),
-                _react2.default.createElement(ClockTimeSecond, { date: this.props.date })
-            );
-        }
-    }]);
-
-    return ClockTime;
-}(_react2.default.Component);
-
-var ClockDate = function (_React$Component5) {
-    _inherits(ClockDate, _React$Component5);
-
-    function ClockDate() {
-        _classCallCheck(this, ClockDate);
-
-        return _possibleConstructorReturn(this, (ClockDate.__proto__ || Object.getPrototypeOf(ClockDate)).apply(this, arguments));
-    }
-
-    _createClass(ClockDate, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'h1',
-                null,
-                this.props.date.toLocaleDateString()
-            );
-        }
-    }]);
-
-    return ClockDate;
-}(_react2.default.Component);
-
-var Clock = function (_React$Component6) {
-    _inherits(Clock, _React$Component6);
-
-    function Clock(props) {
-        _classCallCheck(this, Clock);
-
-        var _this6 = _possibleConstructorReturn(this, (Clock.__proto__ || Object.getPrototypeOf(Clock)).call(this, props));
-
-        _this6.state = {
-            date: new Date()
+        _this.state = {
+            onOff: _this.props.onOff
         };
-        return _this6;
+        return _this;
     }
 
-    _createClass(Clock, [{
+    _createClass(StrobeControl, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var _this7 = this;
+            var _this2 = this;
 
-            this.interval = setInterval(function () {
-                _this7.setState({
-                    date: new Date()
+            this.timeoutId = setTimeout(function () {
+                _this2.setState({
+                    onOff: false
                 });
-            }, 1000);
+            }, 5000);
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            clearInterval(this.interval);
+            clearTimeout(this.timeoutId);
         }
     }, {
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(ClockTime, { date: this.state.date }),
-                _react2.default.createElement(ClockDate, { date: this.state.date })
-            );
+            if (this.state.onOff) {
+                return _react2.default.createElement(StrobeLight, { color: 'violet', frequency: 1000 });
+            } else {
+                return _react2.default.createElement(
+                    'div',
+                    null,
+                    'by by'
+                );
+            }
         }
     }]);
 
-    return Clock;
+    return StrobeControl;
 }(_react2.default.Component);
 
-var App = function (_React$Component7) {
-    _inherits(App, _React$Component7);
+var StrobeLight = function (_React$Component2) {
+    _inherits(StrobeLight, _React$Component2);
+
+    function StrobeLight(props) {
+        _classCallCheck(this, StrobeLight);
+
+        var _this3 = _possibleConstructorReturn(this, (StrobeLight.__proto__ || Object.getPrototypeOf(StrobeLight)).call(this, props));
+
+        _this3.state = {
+            isChanged: false
+        };
+        return _this3;
+    }
+
+    _createClass(StrobeLight, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this4 = this;
+
+            this.interval = setInterval(function () {
+                _this4.setState({
+                    isChanged: _this4.state.isChanged ? false : true
+                });
+            }, this.props.frequency);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement('div', { style: { width: "500px", height: "500px", backgroundColor: this.state.isChanged ? this.props.color : "yellow" } });
+        }
+    }]);
+
+    return StrobeLight;
+}(_react2.default.Component);
+
+var App = function (_React$Component3) {
+    _inherits(App, _React$Component3);
 
     function App() {
         _classCallCheck(this, App);
@@ -9782,7 +9703,7 @@ var App = function (_React$Component7) {
     _createClass(App, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(Clock, null);
+            return _react2.default.createElement(StrobeControl, { onOff: true });
         }
     }]);
 
