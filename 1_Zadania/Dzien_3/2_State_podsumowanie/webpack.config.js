@@ -1,7 +1,7 @@
 //Konfiguracja Webpack
 
 module.exports	=	{
-    entry:	"./js/zadanie02.jsx",
+    entry:	"./js/zadanie00.jsx",
     output:	{	filename:	"./js/out.js"	},
     watch:	true,
     module:	{
