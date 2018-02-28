@@ -9608,66 +9608,85 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Button = function (_React$Component) {
-    _inherits(Button, _React$Component);
+var MobileMenu = function (_React$Component) {
+    _inherits(MobileMenu, _React$Component);
 
-    function Button(props) {
-        _classCallCheck(this, Button);
+    function MobileMenu(props) {
+        _classCallCheck(this, MobileMenu);
 
-        var _this = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (MobileMenu.__proto__ || Object.getPrototypeOf(MobileMenu)).call(this, props));
 
-        _this.handleButton2Click = function () {
+        _this.handleImgClick = function () {
             _this.setState({
-                text: 'Click!'
+                firstIsVisible: false,
+                secondIsVisible: true
             });
         };
 
-        _this.handleButton3Click = function () {
+        _this.handleHideClick = function () {
             _this.setState({
-                width: '300px'
+                firstIsVisible: true,
+                secondIsVisible: false
             });
         };
 
         _this.state = {
-            text: 'Klik!',
-            width: 'auto'
+            firstIsVisible: true,
+            secondIsVisible: false
         };
         return _this;
     }
 
-    _createClass(Button, [{
-        key: 'handleButton1Click',
-        value: function handleButton1Click() {
-            console.log('Pierwszy przycisk kliknięty');
-        }
-    }, {
+    _createClass(MobileMenu, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                'div',
+                'menu',
                 null,
                 _react2.default.createElement(
-                    'button',
-                    { onClick: this.handleButton1Click },
-                    this.state.text
+                    'div',
+                    { onClick: this.handleImgClick,
+                        style: { display: this.state.firstIsVisible ? 'block' : 'none' } },
+                    _react2.default.createElement('img', { src: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Hamburger_icon.svg', alt: 'Otw\xF3rz menu' })
                 ),
                 _react2.default.createElement(
-                    'button',
-                    { onClick: this.handleButton2Click },
-                    this.state.text
-                ),
-                _react2.default.createElement(
-                    'button',
-                    {
-                        onClick: this.handleButton3Click,
-                        style: { width: this.state.width } },
-                    this.state.text
+                    'div',
+                    { style: { display: this.state.secondIsVisible ? 'block' : 'none' } },
+                    _react2.default.createElement(
+                        'ul',
+                        null,
+                        _react2.default.createElement(
+                            'li',
+                            null,
+                            'Menu 1...'
+                        ),
+                        _react2.default.createElement(
+                            'li',
+                            null,
+                            'Menu 2...'
+                        ),
+                        _react2.default.createElement(
+                            'li',
+                            null,
+                            'Menu 3...'
+                        ),
+                        _react2.default.createElement(
+                            'li',
+                            null,
+                            'Menu 4...'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { onClick: this.handleHideClick },
+                        'Schowaj menu'
+                    )
                 )
             );
         }
     }]);
 
-    return Button;
+    return MobileMenu;
 }(_react2.default.Component);
 
 var App = function (_React$Component2) {
@@ -9682,7 +9701,7 @@ var App = function (_React$Component2) {
     _createClass(App, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(Button, null);
+            return _react2.default.createElement(MobileMenu, null);
         }
     }]);
 
